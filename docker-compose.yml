@@ -1,0 +1,12 @@
+version: '3'
+services:
+  bayanometer_bot:
+    build: .
+    env_file:
+      # set Telegram bot token and redis connection in this file
+      secrets.env
+    network_mode: "host"
+    volumes:
+      - ./logs:/app/logs
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
