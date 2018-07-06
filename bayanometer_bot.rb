@@ -11,8 +11,7 @@ require 'logger'
 
 
 def added_to_the_new_chat(bot, chat_id)
-    bot.api.send_message(chat_id: chat_id, text: "Дратути!")
-    bot.api.send_message(chat_id: chat_id, text: "Да начнутся голодные игры!")
+    bot.api.send_message(chat_id: chat_id, text: "Баянометр активирован!")
     # TODO: add history parsing
 end
 
@@ -35,7 +34,7 @@ Telegram::Bot::Client.run(bot_auth_token) do |bot|
         if !message.new_chat_members.empty?
             log.info "Recieved notification about a new member."
             for member in message.new_chat_members
-                if member.id = my_id
+                if member.id == my_id
                     log.info "I was added to the new chat."
                     added_to_the_new_chat(bot, message.chat.id)
                 end
